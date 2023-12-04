@@ -5,4 +5,5 @@ What I did to get to here.
 3. The function to display the user input.
 4. The function to execute commands
 5. The main source code which will hold as the Entry point.
-
+The files include the
+show_prompt, nathan_myPrint, myown_format, show_prompt and client_rule.
