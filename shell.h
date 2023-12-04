@@ -6,3 +6,4 @@
 #include <string.h>
 #include <stdbool.h>
 
+void show_prompt(void);
