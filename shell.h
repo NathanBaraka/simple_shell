@@ -8,7 +8,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-// Function declarations
 void nathan_myPrint(const char *myown_format);
 void show_prompt(void);
 void read_rule(char *rule, size_t size);
