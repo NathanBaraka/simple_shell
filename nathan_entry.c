@@ -1,18 +1,24 @@
 #include "shell.h"
-/* It evokes the shell
- * Takes the show_prompt and gives the required output
- */
 
-int main(void) {
+/**
+ * main - Entry point for the shell program
+ *
+ * This function evokes the shell in an infinite loop.
+ * It shows the prompt, reads a rule, and executes it.
+ *
+ * Return: Always 0 (indicating successful execution)
+ */
+int main(void)
+{
     char rule[147];
 
-    while (true) {
-       show_prompt();
-        read_rule(rule, sizeof(rule)); 
- 	execute_rule(rule);
- 
+    while (1)
+     {
+        show_prompt();
+        read_rule(rule, sizeof(rule));
+        execute_rule(rule);
     }
 
-     return 0;
- }
+    return 0;
+}
 

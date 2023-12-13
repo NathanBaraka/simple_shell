@@ -1,20 +1,18 @@
 #ifndef SHELL_H
 #define SHELL_H
-/* 
- * These are the the libraries to be used.
- */
+
 #include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdbool.h>
 #include <stdlib.h>
-/*
- * these are the prototypes on each program.
- */
-void show_prompt(void);
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+// Function declarations
 void nathan_myPrint(const char *myown_format);
+void show_prompt(void);
+void read_rule(char *rule, size_t size);
 void enact_rule(const char *rule);
-void client_rule(char *rule, size_t size);
 
+#endif /* SHELL_H */
 
-#endif 

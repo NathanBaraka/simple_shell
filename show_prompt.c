@@ -1,9 +1,12 @@
 #include "shell.h"
- 
-/*This is the function to display the new prompt
- * on the terminal
+
+/**
+ * show_prompt - Display the shell prompt
+ *
+ * This function prints the shell prompt to the standard output.
  */
- void show_prompt(void) {
+void show_prompt(void)
+{
     nathan_myPrint("Nathan_shell$$ ");
 }
 
