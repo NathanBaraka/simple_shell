@@ -6,13 +6,6 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-void nathan_myPrint(const char *myown_format);
-void show_prompt(void);
-void enact_rule(const char *rule);
-ssize_t custom_getline(char *buffer, size_t size, const char *prompt);
-char *custom_strtok(char *str, const char *delim, char **saveptr);
-void handle_exit_command(const char *rule);
-
 /**
  * main - Entry point for the shell program
  *
@@ -88,13 +81,15 @@ nathan_myPrint("Nathan_shell$$ ");
  */
 ssize_t custom_getline(char *buffer, size_t size, const char *prompt)
 {
+ssize_t chars_read;
+
 if (write(STDOUT_FILENO, prompt, strlen(prompt)) == -1)
 {
 perror("write");
 exit(EXIT_FAILURE);
 }
 
-ssize_t chars_read = read(STDIN_FILENO, buffer, size);
+chars_read = read(STDIN_FILENO, buffer, size);
 if (chars_read == -1)
 {
 perror("read");
@@ -102,7 +97,7 @@ exit(EXIT_FAILURE);
 }
 
 buffer[chars_read - 1] = '\0';
-return (chars_read);
+return chars_read;
 }
 /**
  * custom_strtok - Custom string tokenizer
@@ -161,15 +156,17 @@ write(STDOUT_FILENO, myown_format, strlen(myown_format));
 void handle_exit_command(const char *rule)
 {
 const char *exit_cmd = "exit";
+int exit_status;
+
 if (strncmp(rule, exit_cmd, strlen(exit_cmd)) == 0)
 {
 const char *status_str = rule + strlen(exit_cmd);
 while (*status_str == ' ')
 {
-status_str++; s
+status_str++;
 }
 
-int exit_status = atoi(status_str);
+exit_status = atoi(status_str);
 exit(exit_status);
 }
 }

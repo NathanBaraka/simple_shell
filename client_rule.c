@@ -37,13 +37,19 @@ handle_exit_command(rule);
 */
 void handle_exit_command(const char *rule)
 {
-const char *status_str = rule + strlen("exit");
+const char *exit_cmd = "exit";
+int exit_status;
+
+if (strncmp(rule, exit_cmd, strlen(exit_cmd)) == 0)
+{
+const char *status_str = rule + strlen(exit_cmd);
 while (*status_str == ' ')
 {
 status_str++;
 }
 
-int exit_status = atoi(status_str);
-
+exit_status = atoi(status_str);
 exit(exit_status);
 }
+}
+
