@@ -16,7 +16,7 @@ int main(void)
      {
         show_prompt();
         read_rule(rule, sizeof(rule));
-        execute_rule(rule);
+        enact_rule(rule);
     }
 
     return 0;
