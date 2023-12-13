@@ -23,7 +23,7 @@ char *custom_strtok(char *str, const char *delim, char **saveptr)
 	if (*str == '\0')
 	{
 		*saveptr = str;
-		return(NULL);
+		return (NULL);
 	}
 
 	token = str;
