@@ -10,14 +10,14 @@
  */
 int main(void)
 {
-    char rule[147];
+char rule[147];
 
-    while (1)
-     {
-        show_prompt();
-        client_rule(rule, sizeof(rule));
-        enact_rule(rule);
-    }
+while (1)
+{
+show_prompt();
+client_rule(rule, sizeof(rule));
+enact_rule(rule);
+}
 
-    return 0;
+return (0);
 }
