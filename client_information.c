@@ -25,4 +25,4 @@ void client_rule(char *rule, size_t size)
 	}
 	rule[strcspn(rule, "\n")] = '\0'; 
 /* Removes a newline. */
-}
+

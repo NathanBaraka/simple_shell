@@ -15,7 +15,7 @@ int main(void)
     while (1)
      {
         show_prompt();
-        read_rule(rule, sizeof(rule));
+        client_rule(rule, sizeof(rule));
         enact_rule(rule);
     }
 
