@@ -5,7 +5,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include "utils.h"
 
 /**
  * main - Entry point for the shell program
