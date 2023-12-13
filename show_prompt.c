@@ -7,6 +7,5 @@
  */
 void show_prompt(void)
 {
-    nathan_myPrint("Nathan_shell$$ ");
+nathan_myPrint("Nathan_shell$$ ");
 }
-
