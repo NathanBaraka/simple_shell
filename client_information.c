@@ -10,19 +10,20 @@
  */
 void client_rule(char *rule, size_t size)
 {
-	if (fgets(rule, size, stdin) == NULL)
-	{
-		if (feof(stdin))
-		{
-			nathan_myPrint("\n");
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			perror("Error occurred while reading input");
-			exit(EXIT_FAILURE);
-		}
-	}
-	rule[strcspn(rule, "\n")] = '\0'; 
-/* Removes a newline. */
+    if (fgets(rule, size, stdin) == NULL)
+    {
+        if (feof(stdin))
+        {
+            nathan_myPrint("\n");
+            exit(EXIT_SUCCESS);
+        }
+        else
+        {
+            perror("Error occurred while reading input");
+            exit(EXIT_FAILURE);
+        }
+    }
+    rule[strcspn(rule, "\n")] = '\0';
+    /* Removes a newline. */
+}
 
