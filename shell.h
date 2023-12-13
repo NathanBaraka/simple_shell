@@ -10,7 +10,7 @@
 
 void nathan_myPrint(const char *myown_format);
 void show_prompt(void);
-void read_rule(char *rule, size_t size);
+void client_rule(char *rule, size_t size);
 void enact_rule(const char *rule);
 
 #endif /* SHELL_H */
