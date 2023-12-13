@@ -1,6 +1,5 @@
 #include "shell.h"
-#include <unistd.h> 
-
+#include <unistd.h>
 /**
  * nathan_myPrint - Custom print function
  * @myown_format: String to be printed
@@ -9,6 +8,5 @@
  */
 void nathan_myPrint(const char *myown_format)
 {
-    write(STDOUT_FILENO, myown_format, strlen(myown_format));
+write(STDOUT_FILENO, myown_format, strlen(myown_format));
 }
-
