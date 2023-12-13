@@ -1,6 +1,6 @@
-#ifndef PATH_UTILS_H
-#define PATH_UTILS_H
+#ifndef UTILS_H
+#define UTILS_H
 
 char *construct_full_path(const char *command);
 
-#endif /* PATH_UTILS_H */
+#endif /*_UTILS_H */
