@@ -12,6 +12,8 @@ void nathan_myPrint(const char *myown_format);
 void show_prompt(void);
 void client_rule(char *rule, size_t size);
 void enact_rule(const char *rule);
+ssize_t custom_getline(char *buffer, size_t size, const char *prompt);
+char *custom_strtok(char *str, const char *delim, char **saveptr);
 
 #endif /* SHELL_H */
 
