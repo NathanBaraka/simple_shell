@@ -1,43 +1,60 @@
 #include "shell.h"
 
 /**
- * custom_strtok - Custom string tokenizer
- * @str: String to tokenize
- * @delim: Delimiter character
- * @saveptr: Pointer to maintain state between calls
+ * custom_getline - Read an entire line from input
+ * @buffer: Buffer to store the line
+ * @size: Size of the buffer
+ * @prompt: Prompt to display
  *
- * This function tokenizes a string using the provided delimiter character.
- * It maintains the state between calls using a pointer.
+ * Description: This function reads an entire line from the input using a buffer.
+ * It calls the least possible read system calls by reusing static variables.
+ * It does not provide cursor movement.
  *
- * Return: On success, returns a pointer to the next token.
- * On failure, returns NULL.
+ * Return: On success, returns the number of characters read (including newline).
+ * On failure, returns -1.
  */
-char *custom_strtok(char *str, const char *delim, char **saveptr)
+ssize_t custom_getline(char *buffer, size_t size, const char *prompt)
 {
-	char *token;
+    static char *line = NULL;    /* Static variable to store the line between calls */
+    static size_t line_size = 0; /* Static variable to store the size of the line */
+    ssize_t chars_read;
 
-	if (str == NULL)
-		str = *saveptr;
+    if (line == NULL)
+    {
+        line = malloc(size);
+        if (line == NULL)
+        {
+            perror("malloc");
+            exit(EXIT_FAILURE);
+        }
+    }
 
-	str += strspn(str, delim);
-	if (*str == '\0')
-	{
-		*saveptr = str;
-		return (NULL);
-	}
+    nathan_myPrint(prompt);
 
-	token = str;
-	str = strpbrk(token, delim);
-	if (str == NULL)
-	{
-		*saveptr = token + strlen(token);
-	}
-	else
-	{
-		*str = '\0';
-		*saveptr = str + 1;
-	}
+    chars_read = read(STDIN_FILENO, line, size);
+    if (chars_read == -1)
+    {
+        perror("read");
+        exit(EXIT_FAILURE);
+    }
 
-	return (token);
+    if (chars_read == 0)
+    {
+        free(line);
+        return -1;  /* End of file */
+    }
+
+    if (chars_read > 0 && line[chars_read - 1] == '\n')
+    {
+        line_size = chars_read;
+    }
+    else
+    {
+        line_size = size;
+    }
+
+    strncpy(buffer, line, line_size);
+
+    return line_size;
 }
 
