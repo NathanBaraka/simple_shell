@@ -15,8 +15,8 @@
  */
 ssize_t custom_getline(char *buffer, size_t size, const char *prompt)
 {
-    static char *line;           /* Static variable to store the line between calls */
-    static size_t line_size;     /* Static variable to store the size of the line */
+    static char *line;       /* Static variable to store the line between calls */
+    static size_t line_size; /* Static variable to store the size of the line */
     ssize_t chars_read;
 
     if (line == NULL)
@@ -41,7 +41,7 @@ ssize_t custom_getline(char *buffer, size_t size, const char *prompt)
     if (chars_read == 0)
     {
         free(line);
-        return -1;  /* End of file */
+        return -1; /* End of file */
     }
 
     if (chars_read > 0 && line[chars_read - 1] == '\n')
