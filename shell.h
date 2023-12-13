@@ -14,6 +14,7 @@ void client_rule(char *rule, size_t size);
 void enact_rule(const char *rule);
 ssize_t custom_getline(char *buffer, size_t size, const char *prompt);
 char *custom_strtok(char *str, const char *delim, char **saveptr);
+void handle_exit_command(const char *rule);
 
 #endif /* SHELL_H */
 
