@@ -13,7 +13,11 @@ void client_rule(char *rule, size_t size) {
             nathan_myPrint("Error occured while reading input.\n");
             exit(EXIT_FAILURE);
         }
-    }
+   
+   } 
+ /*
+  *This removes the new line.
+  */
     rule[strcspn(rule, "\n")] = '\0';
-// Removes a newline.
+
 }
