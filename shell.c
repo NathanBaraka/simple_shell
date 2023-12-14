@@ -23,7 +23,6 @@ while (1)
 {
 show_prompt();
 client_rule(rule, sizeof(rule));
-enact_rule(rule);
 }
 
 return (0);
