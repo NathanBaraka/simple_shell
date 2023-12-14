@@ -15,15 +15,14 @@
  *
  * Return: Always 0 (indicating successful execution)
  */
-
 int main(void)
 {
 char rule[147];
 
 while (1)
 {
-void show_prompt(void);
-void client_rule(char *rule, size_t size);
+show_prompt();
+client_rule(rule, sizeof(rule));
 enact_rule(rule);
 }
 

@@ -6,40 +6,39 @@
 #include <unistd.h>
 
 /**
- * enact_rule - Execute a rule using fork and execlp
- * @rule: The rule to be executed
- *
- * Description:
- *     This function creates a child process to execute the specified rule.
- *     The parent process waits for the child to complete.
- */
+* enact_rule - Execute a shell command
+* @rule: The command to be executed
+*
+* Description:
+*     This function creates a child process to execute the specified command.
+*     The parent process waits for the child to complete.
+*/
 void enact_rule(const char *rule)
 {
 pid_t child_pid = fork();
 
 if (child_pid == -1)
 {
-perror("Fork");
+nathan_myPrint("Error forking process.\n");
 exit(EXIT_FAILURE);
 }
 else if (child_pid == 0)
 {
-char *path = getenv("PATH");
-char *token = custom_strtok(strdup(path), ":", NULL);
-char command_path[256];
 
+char *args[147];
+int arg_count = 0;
+
+char *token = strtok((char *)rule, " ");
 while (token != NULL)
 {
-if (access(strcat(strcpy(command_path, token), rule), X_OK) == 0)
-{
-execlp(command_path, rule, (char *)NULL);
-perror("execlp error");
-exit(EXIT_FAILURE);
+args[arg_count++] = token;
+token = strtok(NULL, " ");
 }
-token = custom_strtok(NULL, ":", NULL);
-}
+args[arg_count] = NULL;
 
-nathan_myPrint("Command not found\n");
+execvp(args[0], args);
+
+nathan_myPrint("Error executing command.\n");
 exit(EXIT_FAILURE);
 }
 else
@@ -47,3 +46,4 @@ else
 wait(NULL);
 }
 }
+
