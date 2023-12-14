@@ -16,7 +16,6 @@
 ssize_t custom_getline(char *buffer, size_t size, const char *prompt)
 {
 static char *line;
-static size_t line_size;
 ssize_t chars_read;
 
 if (line == NULL)
@@ -41,17 +40,11 @@ exit(EXIT_FAILURE);
 if (chars_read == 0)
 {
 free(line);
-return (-1); /* End of file */
+return (-1);
 }
 
-if (chars_read > 0 && line[chars_read - 1] == '\n')
-{
-line_size = chars_read;
-}
-else
-{
-line_size = size;
-}
-strncpy(buffer, line, line_size);
-return (line_size);
+line[chars_read - 1] = '\0';
+strncpy(buffer, line, size);
+
+return (chars_read);
 }
